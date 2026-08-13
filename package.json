@@ -1,0 +1,13 @@
+{
+  "name": "smartsched-ai-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm run start:backend & npm run start:frontend",
+    "dev": "npm run dev:backend & npm run dev:frontend",
+    "start:backend": "cd backend && npm start",
+    "dev:backend": "cd backend && npm run dev",
+    "start:frontend": "cd frontend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev"
+  }
+}
