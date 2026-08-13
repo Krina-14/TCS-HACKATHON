@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1e3a5f;
+  --primary-light: #2c5282;
+  --primary-dark: #0f172a;
+  --accent-ai: #7c3aed;
+  --accent-ai-glow: #a78bfa;
+  --success: #10b981;
+  --success-light: #d1fae5;
+  --warning: #f59e0b;
+  --warning-light: #fef3c7;
+  --danger: #ef4444;
+  --danger-light: #fee2e2;
+  --info: #3b82f6;
+  --bg-primary: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-elevated: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --border-light: #f1f5f9;
+  --glass: rgba(255,255,255,0.85);
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1);
+  --shadow-ai: 0 0 40px rgba(124,58,237,0.15);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dark {
+  --primary: #2c5282;
+  --primary-light: #4299e1;
+  --primary-dark: #0f172a;
+  --accent-ai: #9f7aea;
+  --accent-ai-glow: #d6bcfa;
+  --success: #34d399;
+  --success-light: #064e3b;
+  --warning: #fbbf24;
+  --warning-light: #78350f;
+  --danger: #f87171;
+  --danger-light: #7f1d1d;
+  --info: #60a5fa;
+  --bg-primary: #0f172a;
+  --bg-card: #1e293b;
+  --bg-elevated: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --border: #334155;
+  --border-light: #1e293b;
+  --glass: rgba(30, 41, 59, 0.85);
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.4);
+  --shadow-ai: 0 0 40px rgba(124,58,237,0.3);
+}
+
+/* Accessibility Focus Ring */
+*:focus-visible {
+  outline: 2px solid var(--accent-ai) !important;
+  outline-offset: 2px !important;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Color-blind safe patterns */
+.pattern-stripes {
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.06) 10px, rgba(0,0,0,0.06) 20px) !important;
+}
+.dark .pattern-stripes {
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.06) 10px, rgba(255,255,255,0.06) 20px) !important;
+}
+
+.pattern-dots {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.1) 20%, transparent 20%) !important;
+  background-size: 8px 8px !important;
+}
+.dark .pattern-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 20%, transparent 20%) !important;
+  background-size: 8px 8px !important;
+}
+
+.pattern-checks {
+  background-image: linear-gradient(45deg, rgba(0,0,0,0.05) 25%, transparent 25%), 
+                    linear-gradient(-45deg, rgba(0,0,0,0.05) 25%, transparent 25%), 
+                    linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.05) 75%), 
+                    linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.05) 75%) !important;
+  background-size: 10px 10px !important;
+}
+.dark .pattern-checks {
+  background-image: linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%), 
+                    linear-gradient(-45deg, rgba(255,255,255,0.05) 25%, transparent 25%), 
+                    linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.05) 75%), 
+                    linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.05) 75%) !important;
+  background-size: 10px 10px !important;
+}
+
+/* Glassmorphism utility */
+.glass-effect {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Shimmer Background Grid */
+.grid-glow {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(124, 58, 237, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
+}
+.dark .grid-glow {
+  background-image: linear-gradient(to right, rgba(124, 58, 237, 0.1) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(124, 58, 237, 0.1) 1px, transparent 1px);
+}
+
+/* Bouncing typing indicator */
+@keyframes dot-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.dot-bounce-1 { animation: dot-bounce 1s infinite 0s; }
+.dot-bounce-2 { animation: dot-bounce 1s infinite 0.2s; }
+.dot-bounce-3 { animation: dot-bounce 1s infinite 0.4s; }
+
+/* SVG Stroke Animation */
+@keyframes draw-checkmark {
+  to { stroke-dashoffset: 0; }
+}
+.checkmark-draw {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw-checkmark 0.6s ease-in-out forwards;
+}
+
+/* Sound wave animation */
+@keyframes soundwave {
+  0%, 100% { height: 4px; }
+  50% { height: 28px; }
+}
+.soundwave-bar {
+  animation: soundwave 1.2s ease-in-out infinite;
+}
