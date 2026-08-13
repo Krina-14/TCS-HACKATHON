@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Send, Mic, X, RefreshCw, AlertTriangle, Layers, User } from 'lucide-react';
 import { useStore } from '../store/useStore';
+import api from '../services/api';
 import { ChatBubble } from '../components/ChatBubble';
 import { Badge } from '../components/Badge';
 import { Modal } from '../components/Modal';
@@ -30,15 +31,18 @@ export const AIAssistant: React.FC = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [aiChatMessages, isAiThinking]);
 
-  const handleSend = (textToSend = inputText) => {
+  const handleSend = async (textToSend = inputText) => {
     if (!textToSend.trim()) return;
     setIsAiThinking(true);
     addChatMessage(textToSend);
     setInputText('');
 
-    setTimeout(() => {
+    try {
+      const response = await api.sendVoiceQuery(textToSend);
       setIsAiThinking(false);
-    }, 1200);
+    } catch (e) {
+      setIsAiThinking(false);
+    }
   };
 
   const handleMicClick = () => {

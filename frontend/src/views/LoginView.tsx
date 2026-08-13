@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Lock, Sparkles, ShieldCheck, Zap, RefreshCw, Layers } from 'lucide-react';
 import { useStore, UserRole } from '../store/useStore';
+import api from '../services/api';
 import { Input } from '../components/Input';
 import { Button } from '../components/Button';
 
@@ -31,21 +32,35 @@ export const LoginView: React.FC = () => {
     if (role === 'student') setEmail('student.sem5@smartsched.ai');
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !password) {
       setError('Please fill in all credentials.');
       return;
     }
-    
+
     setIsSubmitting(true);
     setError('');
 
-    setTimeout(() => {
+    try {
+      // Connect to Express Backend Login API
+      const response = await api.login(email, password, activeRole);
+      setIsSubmitting(false);
+
+      if (response && response.success) {
+        setRole(activeRole);
+        setDemoStep(2);
+      } else {
+        // Fallback login for demo
+        setRole(activeRole);
+        setDemoStep(2);
+      }
+    } catch (err) {
+      console.warn('Backend login fallback enabled:', err);
       setIsSubmitting(false);
       setRole(activeRole);
-      setDemoStep(2); // Move demo to admin dashboard step
-    }, 1000);
+      setDemoStep(2);
+    }
   };
 
   const currentRoleColor = 
